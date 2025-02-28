@@ -1,0 +1,71 @@
+@use "sass:math";
+
+// Import Bootstrap functions & variables first
+@import "bootstrap/scss/functions";
+
+// Override Bootstrap variables (Optional)
+$enable-negative-margins:   true;
+$grid-columns:              18;
+$grid-gutter-width:         2rem;
+$grid-row-columns:          10; 
+$small-font-size:           .9em;
+$lead-font-size:            1.1em;
+
+$grid-breakpoints: (
+  mobile: 0,
+  tablet: 600px,
+  desktop: 1200px,
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.125,
+  2: $spacer * 0.25,
+  3: $spacer * 0.375,
+  4: $spacer * 0.5,
+  5: $spacer * 0.75,
+  6: $spacer * 1,
+  7: $spacer * 1.25,
+  8: $spacer * 1.5,
+  9: $spacer * 1.75,
+  10: $spacer * 2,
+  11: $spacer * 2.5,
+  12: $spacer * 3,
+  13: $spacer * 3.5,
+  14: $spacer * 4,
+  15: $spacer * 5,
+  16: $spacer * 6,
+  17: $spacer * 7,
+  18: $spacer * 8,
+  19: $spacer * 9,
+  20: $spacer * 10,
+);
+
+$font-size-base:              1rem;
+
+$h1-font-size:                $font-size-base * 2.75;
+$h2-font-size:                $font-size-base * 2.25;
+$h3-font-size:                $font-size-base * 1.75;
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.25;
+$h6-font-size:                $font-size-base * 1; 
+
+$primary:       #1D283C;
+$secondary:     #1D283C;
+
+/*
+  Bootstrap Required Import
+*/
+@import "bootstrap/scss/variables"; 
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Map overrides
+
+// Import Bootstrap itself
+@import "bootstrap/scss/bootstrap";
+
+// Add custom styles below

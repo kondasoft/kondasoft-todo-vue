@@ -1,6 +1,6 @@
 <template>
   <main>
-    Home
+    <button type="button" class="btn btn-primary">Base class</button>
   </main>
 </template>
 
