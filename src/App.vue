@@ -3,11 +3,13 @@
   <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 
 <script setup>
-  import { RouterView } from 'vue-router'
-  import Navbar from './components/NavBar.vue'
+import { RouterView } from 'vue-router'
+import { useUserStore } from './stores/user'
+import Navbar from './components/layout/NavBar.vue'
+
+const userStore = useUserStore()
+userStore.listenUser()
 </script>
