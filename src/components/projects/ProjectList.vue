@@ -2,7 +2,7 @@
   <div v-if="projectsStore.projects === null" aria-label="Loading" class="placeholder-wave mb-6">
     <span v-for="n in 5" :key="n" class="placeholder"></span>
   </div>
-  <p v-else-if="projectsStore.projects.length === 0" class="alert alert-primary">
+  <p v-else-if="projectsStore.projects.length === 0" class="alert alert-primary text-center mb-7">
     No projects yet!
   </p>
   <ul v-else class="nav flex-column mb-6">

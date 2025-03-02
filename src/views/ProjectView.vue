@@ -1,5 +1,5 @@
 <template>
-  <main class="py-10">
+  <main class="py-8 py-desktop-10">
     <div class="container">
       <TaskList />
       <AddTask />

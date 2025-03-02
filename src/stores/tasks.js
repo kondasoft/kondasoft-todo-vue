@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import short from 'short-uuid'
-import { getFirestore, Timestamp, doc, updateDoc } from 'firebase/firestore'
+import { getFirestore, Timestamp, doc, updateDoc, deleteField } from 'firebase/firestore'
 import { useProjectsStore } from './projects'
 import { useRoute } from 'vue-router'
 
@@ -34,5 +34,11 @@ export const useTasksStore = defineStore('tasks', () => {
     })
   }
 
-  return { tasks, getTasks, addTask, commpleteTask }
+  async function deleteTask(taskId) {
+    await updateDoc(doc(db, `/projects/${route.params.projectId}`), {
+      [`tasks.${taskId}`]: deleteField(),
+    })
+  }
+
+  return { tasks, getTasks, addTask, commpleteTask, deleteTask }
 })

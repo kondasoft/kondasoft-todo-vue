@@ -21,6 +21,7 @@
         class="form-control py-4"
         placeholder="Add task"
         aria-label="Add task"
+        maxlength="140"
       />
     </div>
   </form>
