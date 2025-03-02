@@ -5,16 +5,14 @@ import { auth } from '@/firebase'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(null)
-  const userStore = useUserStore()
 
   function listenUser() {
     onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        userStore.user = {
+        user.value = {
           uid: firebaseUser.uid,
           email: firebaseUser.email,
         }
-        console.log(userStore.user)
       } else {
         await signInAnonymously(auth)
       }

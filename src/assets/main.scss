@@ -53,7 +53,7 @@ $h5-font-size: $font-size-base * 1.1;
 $h6-font-size: $font-size-base * 1;
 
 $primary: #1d283c;
-$secondary: #1d283c;
+$secondary: #44556c;
 
 /*
   Bootstrap Required Import
@@ -83,6 +83,13 @@ body {
   margin-right: auto;
   margin-left: auto;
   max-width: 900px;
+}
+
+.container-fluid {
+  --bs-gutter-x: 2rem;
+  --bs-gutter-y: 0;
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
 }
 
 @media (max-width: 1199px) {

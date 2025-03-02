@@ -19,8 +19,8 @@
         v-model="title"
         type="text"
         class="form-control py-4"
-        placeholder="Add task"
-        aria-label="Add task"
+        placeholder="Create project"
+        aria-label="Create project"
       />
     </div>
   </form>
@@ -30,15 +30,18 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useTasksStore } from '@/stores/tasks'
+import { useProjectsStore } from '@/stores/projects'
+import { useRouter } from 'vue-router'
 
-const tasksStore = useTasksStore()
+const projectsStore = useProjectsStore()
+const router = useRouter()
 const title = ref(null)
 
 async function onSubmit() {
   if (!title.value) return
 
-  await tasksStore.createTask(title.value)
+  const docRef = await projectsStore.createProject(title.value)
   title.value = null
+  router.push(`/project/${docRef.id}`)
 }
 </script>
