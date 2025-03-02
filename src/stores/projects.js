@@ -9,7 +9,6 @@ import {
   query,
   where,
 } from 'firebase/firestore'
-
 import { useUserStore } from './user'
 
 export const useProjectsStore = defineStore('projects', () => {

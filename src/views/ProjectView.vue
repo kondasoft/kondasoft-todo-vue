@@ -1,7 +1,7 @@
 <template>
   <main class="py-10">
     <div class="container">
-      <Tasklist />
+      <TaskList />
       <AddTask />
     </div>
   </main>
@@ -10,9 +10,6 @@
 <style scoped></style>
 
 <script setup>
+import TaskList from '@/components/tasks/TaskList.vue'
 import AddTask from '@/components/tasks/AddTask.vue'
-import Tasklist from '@/components/tasks/Tasklist.vue'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
 </script>

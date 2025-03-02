@@ -1,5 +1,7 @@
 <template>
-  <p v-if="projectsStore.projects === null" class="">Loading...</p>
+  <div v-if="projectsStore.projects === null" aria-label="Loading" class="placeholder-wave mb-6">
+    <span v-for="n in 5" :key="n" class="placeholder"></span>
+  </div>
   <p v-else-if="projectsStore.projects.length === 0" class="alert alert-primary">
     No projects yet!
   </p>
@@ -78,6 +80,15 @@ hr {
     font-style: normal;
     font-size: 0.85em;
   }
+}
+
+.placeholder {
+  background-color: rgba(var(--bs-dark-rgb), 0.1);
+  border-radius: var(--bs-border-radius);
+  width: 100%;
+  height: 1.5rem;
+  opacity: 1;
+  margin: 0.5rem 0;
 }
 </style>
 

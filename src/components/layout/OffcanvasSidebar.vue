@@ -5,11 +5,11 @@
     tabindex="-1"
     aria-labelledby="offcanvas-sidebar-label"
   >
-    <div class="offcanvas-header bg-light">
+    <div class="offcanvas-header bg-light d-desktop-none">
       <h2 id="offcanvas-sidebar-label" class="offcanvas-title h3">Projects</h2>
       <button
         type="button"
-        class="btn-close text-reset"
+        class="btn-close"
         data-bs-dismiss="offcanvas"
         aria-label="Close"
       ></button>
@@ -21,7 +21,20 @@
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.offcanvas {
+  --bs-offcanvas-width: 360px;
+  --bs-offcanvas-border-color: var(--bs-border-color);
+}
+@media (min-width: 1200px) {
+  .offcanvas {
+    visibility: visible;
+  }
+  [sidebar-open] .offcanvas {
+    transform: none;
+  }
+}
+</style>
 
 <script setup>
 import { watch } from 'vue'

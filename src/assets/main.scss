@@ -69,11 +69,16 @@ $secondary: #44556c;
 // Import Bootstrap itself
 @import 'bootstrap/scss/bootstrap';
 
-// Add custom styles below
+/* 
+  Add custom styles below
+*/
+
+// Body
 body {
   background-color: var(--bs-light);
 }
 
+// Container
 .container {
   --bs-gutter-x: 2rem;
   --bs-gutter-y: 0;
@@ -92,8 +97,50 @@ body {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
 }
 
-@media (max-width: 1199px) {
-  .container {
-    max-width: 800px;
-  }
+// Alerts
+.alert {
+  padding: 0.75rem 1rem;
+  line-height: normal;
+}
+
+.alert-primary {
+  --bs-alert-color: var(--bs-primary);
+  --bs-alert-bg: rgba(var(--bs-primary-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-primary-rgb), 0.5);
+}
+
+.alert-secondary {
+  --bs-alert-color: var(--bs-secondary);
+  --bs-alert-bg: rgba(var(--bs-secondary-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-secondary-rgb), 0.5);
+}
+
+.alert-dark {
+  --bs-alert-color: var(--bs-dark);
+  --bs-alert-bg: rgba(var(--bs-dark-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-dark-rgb), 0.5);
+}
+
+.alert-success {
+  --bs-alert-color: var(--bs-success);
+  --bs-alert-bg: rgba(var(--bs-success-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-success-rgb), 0.5);
+}
+
+.alert-warning {
+  --bs-alert-color: var(--bs-warning);
+  --bs-alert-bg: rgba(var(--bs-warning-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-warning-rgb), 0.5);
+}
+
+.alert-danger {
+  --bs-alert-color: var(--bs-danger);
+  --bs-alert-bg: rgba(var(--bs-danger-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-danger-rgb), 0.5);
+}
+
+.alert-info {
+  --bs-alert-color: var(--bs-info);
+  --bs-alert-bg: rgba(var(--bs-info-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-info-rgb), 0.5);
 }

@@ -1,10 +1,21 @@
 <template>
-  <Navbar />
-  <RouterView />
+  <div id="app-inner">
+    <Navbar />
+    <RouterView />
+  </div>
   <OffcanvasSidebar />
 </template>
 
-<style scoped></style>
+<style lang="scss">
+@media (min-width: 1200px) {
+  #app-inner {
+    transition: all 0.3s ease-in-out;
+  }
+  #app[sidebar-open] #app-inner {
+    margin-left: 360px;
+  }
+}
+</style>
 
 <script setup>
 import { RouterView } from 'vue-router'
