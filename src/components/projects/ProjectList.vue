@@ -90,6 +90,16 @@ hr {
   opacity: 1;
   margin: 0.5rem 0;
 }
+
+[data-bs-theme='dark'] {
+  .nav-link.router-link-active {
+    background-color: rgba(var(--bs-white-rgb), 0.05);
+    color: var(--bs-white);
+  }
+  .placeholder {
+    background-color: rgba(var(--bs-white-rgb), 0.1);
+  }
+}
 </style>
 
 <script setup>

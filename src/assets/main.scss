@@ -72,6 +72,24 @@ $secondary: #44556c;
 /* 
   Add custom styles below
 */
+:root {
+  --bs-success: #15803d;
+  --bs-success-rgb: 21, 128, 61;
+  --bs-warning: #a16207;
+  --bs-warning-rgb: 161, 98, 7;
+  --bs-danger: #b91c1c;
+  --bs-danger-rgb: 185, 28, 28;
+  --bs-info: #0369a1;
+  --bs-info-rgb: 3, 105, 161;
+}
+
+[data-bs-theme='dark'] {
+  --bs-light: #1a1d20;
+  --bs-light-rgb: 26, 29, 32;
+  --bs-border-color: rgba(var(--bs-white-rgb), 0.1);
+  --bs-link-color: rgba(var(--bs-white-rgb), 0.75);
+  --bs-link-hover-color: rgba(var(--bs-white-rgb), 1);
+}
 
 // Body
 body {
@@ -106,41 +124,47 @@ body {
 .alert-primary {
   --bs-alert-color: var(--bs-primary);
   --bs-alert-bg: rgba(var(--bs-primary-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-primary-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-primary-rgb), 0.2);
+}
+
+[data-bs-theme='dark'] .alert-primary {
+  --bs-alert-color: var(--bs-white);
+  --bs-alert-bg: rgba(var(--bs-white-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-white-rgb), 0.2);
 }
 
 .alert-secondary {
   --bs-alert-color: var(--bs-secondary);
   --bs-alert-bg: rgba(var(--bs-secondary-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-secondary-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-secondary-rgb), 0.2);
 }
 
 .alert-dark {
   --bs-alert-color: var(--bs-dark);
   --bs-alert-bg: rgba(var(--bs-dark-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-dark-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-dark-rgb), 0.2);
 }
 
 .alert-success {
   --bs-alert-color: var(--bs-success);
   --bs-alert-bg: rgba(var(--bs-success-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-success-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-success-rgb), 0.2);
 }
 
 .alert-warning {
   --bs-alert-color: var(--bs-warning);
   --bs-alert-bg: rgba(var(--bs-warning-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-warning-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-warning-rgb), 0.2);
 }
 
 .alert-danger {
   --bs-alert-color: var(--bs-danger);
   --bs-alert-bg: rgba(var(--bs-danger-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-danger-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-danger-rgb), 0.2);
 }
 
 .alert-info {
   --bs-alert-color: var(--bs-info);
   --bs-alert-bg: rgba(var(--bs-info-rgb), 0.1);
-  --bs-alert-border-color: rgba(var(--bs-info-rgb), 0.5);
+  --bs-alert-border-color: rgba(var(--bs-info-rgb), 0.2);
 }
