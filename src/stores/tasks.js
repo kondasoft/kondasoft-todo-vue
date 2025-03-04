@@ -15,9 +15,13 @@ export const useTasksStore = defineStore('tasks', () => {
     if (!route.params.projectId || !projectsStore.projects) {
       return
     }
-    console.log('get tasks!')
+    // console.log('get tasks!')
     const project = projectsStore.projects.find((project) => project.id === route.params.projectId)
-    tasks.value = project.tasks.sort((a, b) => a.created_at - b.created_at)
+    tasks.value = project.tasks.sort((a, b) => {
+      if (a.starred && !b.starred) return -1
+      if (!a.starred && b.starred) return 1
+      return a.created_at - b.created_at
+    })
   }
 
   async function addTask(title) {
@@ -35,6 +39,12 @@ export const useTasksStore = defineStore('tasks', () => {
     })
   }
 
+  async function starTask(taskId, starred) {
+    await updateDoc(doc(db, `/projects/${route.params.projectId}`), {
+      [`tasks.${taskId}.starred`]: !starred,
+    })
+  }
+
   async function editTask(taskId, title) {
     await updateDoc(doc(db, `/projects/${route.params.projectId}`), {
       [`tasks.${taskId}.title`]: title,
@@ -47,5 +57,5 @@ export const useTasksStore = defineStore('tasks', () => {
     })
   }
 
-  return { tasks, getTasks, addTask, commpleteTask, editTask, deleteTask }
+  return { tasks, getTasks, addTask, commpleteTask, starTask, editTask, deleteTask }
 })
