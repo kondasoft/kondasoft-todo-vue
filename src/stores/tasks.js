@@ -12,9 +12,10 @@ export const useTasksStore = defineStore('tasks', () => {
   const projectsStore = useProjectsStore()
 
   function getTasks() {
-    if (!route.params.projectId) {
+    if (!route.params.projectId || !projectsStore.projects) {
       return
     }
+    console.log('get tasks!')
     const project = projectsStore.projects.find((project) => project.id === route.params.projectId)
     tasks.value = project.tasks.sort((a, b) => a.created_at - b.created_at)
   }
@@ -34,11 +35,17 @@ export const useTasksStore = defineStore('tasks', () => {
     })
   }
 
+  async function editTask(taskId, title) {
+    await updateDoc(doc(db, `/projects/${route.params.projectId}`), {
+      [`tasks.${taskId}.title`]: title,
+    })
+  }
+
   async function deleteTask(taskId) {
     await updateDoc(doc(db, `/projects/${route.params.projectId}`), {
       [`tasks.${taskId}`]: deleteField(),
     })
   }
 
-  return { tasks, getTasks, addTask, commpleteTask, deleteTask }
+  return { tasks, getTasks, addTask, commpleteTask, editTask, deleteTask }
 })

@@ -1,10 +1,11 @@
+import './assets/bootstrap.scss'
+import './firebase'
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { Dropdown } from 'bootstrap'
 import App from './App.vue'
 import router from './router'
-import './firebase'
-import './assets/main.scss'
 
 const app = createApp(App)
 

@@ -15,13 +15,17 @@
         :checked="task.completed"
         @change="tasksStore.commpleteTask(task.id, task.completed)"
       />
-      <label class="form-check-label stretched-link" :for="`checkbox-${task.id}`">{{
-        task.title
-      }}</label>
+      <span
+        class="form-check-title"
+        :for="`checkbox-${task.id}`"
+        contenteditable="plaintext-only"
+        @keydown.enter.prevent="editTask(task.id, $event)"
+        >{{ task.title }}</span
+      >
       <button
         v-if="task.completed"
-        class="btn btn-danger btn-sm"
-        @click="tasksStore.deleteTask(task.id)"
+        class="btn btn-danger btn-sm btn-side"
+        @click="deleteTask(task.id)"
         aria-label="Delete task"
       >
         <svg
@@ -42,44 +46,61 @@
 </template>
 
 <style lang="scss" scoped>
-.form-check-input {
-  margin-right: 0.75rem;
-  & + label {
+.list-group-item {
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  .form-check-input {
+    margin: 0 0.5rem;
     cursor: pointer;
-    width: calc(100% - 3.5rem);
-  }
-  &:checked + label {
-    opacity: 0.5;
-    text-decoration: line-through;
+    & + .form-check-title {
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+      width: calc(100% - 4.25rem);
+      border: 1px solid transparent;
+      cursor: text;
+      &:hover {
+        border-color: var(--bs-border-color);
+      }
+    }
+    &:checked + .form-check-title {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
   }
 }
 
-.btn-danger {
+.btn-side {
   position: absolute;
-  right: 0.125rem;
+  right: 0.25rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
   background-color: transparent;
-  color: var(--bs-danger);
   border: none;
   opacity: 1;
   display: flex;
   padding: 0.6rem;
   border-radius: 50rem;
-  &:hover {
-    background-color: rgba(var(--bs-danger-rgb), 0.1);
-    color: var(--bs-danger);
+  transition: all 0.2s ease-out;
+  &.btn-primary {
+    color: var(--bs-primary);
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-color: rgba(var(--bs-primary-rgb), 0.1);
+      color: var(--bs-primary);
+    }
   }
-}
-
-.placeholder {
-  background-color: rgba(var(--bs-dark-rgb), 0.1);
-  border-radius: var(--bs-border-radius);
-  width: 100%;
-  height: 1.5rem;
-  opacity: 1;
-  margin: 0.5rem 0;
+  &.btn-danger {
+    color: var(--bs-danger);
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-color: rgba(var(--bs-danger-rgb), 0.1);
+      color: var(--bs-danger);
+    }
+  }
 }
 
 [data-bs-theme='dark'] {
@@ -90,14 +111,11 @@
       background-color: rgba(var(--bs-white-rgb), 0.1);
     }
   }
-  .placeholder {
-    background-color: rgba(var(--bs-white-rgb), 0.05);
-  }
 }
 </style>
 
 <script setup>
-import { watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useProjectsStore } from '@/stores/projects'
 import { useTasksStore } from '@/stores/tasks'
 import { useRoute } from 'vue-router'
@@ -121,4 +139,22 @@ watch(
     tasksStore.getTasks()
   },
 )
+
+onMounted(() => {
+  tasksStore.getTasks()
+})
+
+async function editTask(taskId, event) {
+  console.log('Edit task:', taskId)
+  const title = event.target.innerText.trim()
+  if (!title.length) return
+
+  await tasksStore.editTask(taskId, title)
+  event.target.blur()
+}
+
+async function deleteTask(taskId) {
+  console.log('Delete task:', taskId)
+  tasksStore.deleteTask(taskId)
+}
 </script>
