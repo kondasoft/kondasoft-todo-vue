@@ -29,5 +29,9 @@ coverage
 
 *.tsbuildinfo
 
+# Firebase
+.firebase
+.firebaserc
+
 # KondaSoft
 firebase-config.js

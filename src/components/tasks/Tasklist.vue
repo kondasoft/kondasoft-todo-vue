@@ -111,6 +111,8 @@
     }
   }
   &[data-starred='true'] {
+    border-left-width: 2px;
+    border-left-color: rgba(var(--color-starred), 1);
     .form-check-input {
       border-color: rgba(var(--color-starred), 1);
       &:focus {
@@ -119,6 +121,8 @@
       &:checked {
         background-color: rgba(var(--color-starred), 1);
       }
+    }
+    .form-check-title {
     }
   }
 }

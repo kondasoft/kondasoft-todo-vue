@@ -28,15 +28,47 @@
           <div class="card">
             <h5 class="card-header text-truncate">{{ project.title }}</h5>
             <div class="card-body">
-              <p class="card-text" v-if="project.tasks.length">{{ project.count_tasks }} tasks</p>
-              <p class="card-text opacity-50" v-else>No tasks yet!</p>
-              <router-link
-                :to="`/project/${project.id}`"
-                class="btn btn-outline-primary btn-sm w-100"
-                aria-label="View project"
-              >
-                View tasks
-              </router-link>
+              <p class="card-text" v-if="project.tasks.length">
+                {{ project.count_tasks }} tasks
+                <span class="opacity-50"
+                  >({{ project.tasks.filter((task) => task.starred).length }} starred)</span
+                >
+              </p>
+              <p class="card-text" v-else>No tasks yet!</p>
+              <div class="btn-group w-100">
+                <router-link
+                  :to="`/project/${project.id}`"
+                  class="btn btn-outline-primary btn-sm w-100"
+                  aria-label="View project"
+                >
+                  View project
+                </router-link>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split px-5"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <button class="dropdown-item" data-btn-edit @click="editProject(project.id)">
+                      Edit project
+                    </button>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <button
+                      class="dropdown-item"
+                      data-btn-delete
+                      @click="deleteProject(project.id)"
+                    >
+                      Delete project
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -45,7 +77,19 @@
   </main>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.dropdown-menu {
+  .dropdown-item {
+    &[data-btn-delete] {
+      color: var(--bs-danger);
+      &:active {
+        color: var(--bs-white);
+        background: var(--bs-danger);
+      }
+    }
+  }
+}
+</style>
 
 <script setup>
 import { useProjectsStore } from '@/stores/projects'

@@ -18,8 +18,8 @@ export const useTasksStore = defineStore('tasks', () => {
     // console.log('get tasks!')
     const project = projectsStore.projects.find((project) => project.id === route.params.projectId)
     tasks.value = project.tasks.sort((a, b) => {
-      if (a.starred && !b.starred) return -1
-      if (!a.starred && b.starred) return 1
+      // if (a.starred && !b.starred) return -1
+      // if (!a.starred && b.starred) return 1
       return a.created_at - b.created_at
     })
   }
