@@ -19,7 +19,7 @@
         type="checkbox"
         value=""
         :checked="task.completed"
-        @change="tasksStore.commpleteTask(task.id, task.completed)"
+        @change="commpleteTask(task.id, task.completed)"
       />
       <span
         class="form-check-title"
@@ -206,6 +206,15 @@ watch(
 onMounted(() => {
   tasksStore.getTasks()
 })
+
+async function commpleteTask(taskId, completed) {
+  // console.log('Complete task:', taskId)
+  if (!completed) {
+    const audio = new Audio('/sounds/bell-172780.mp3')
+    audio.play()
+  }
+  await tasksStore.commpleteTask(taskId, completed)
+}
 
 async function editTask(taskId, event) {
   // console.log('Edit task:', taskId)
