@@ -1,9 +1,9 @@
-# KondaSoft ToDo - A Vue 3 / Bootstrap 5 web app
+# KondaSoft ToDo - Vue 3 / Bootstrap 5 web app
 
-This template should help get you started developing with Vue 3 in Vite.
+A web app built with Vue 3, Bootstrap 5, and Firebase (Auth, Firestore). Perfect to help you understand the foundation if you plan to build similar projects. 
 
 More information will be provided soon.
 
 ## Demo
-https://todo.kondasoft.com/
+https://todo.kondasoft.com
 
